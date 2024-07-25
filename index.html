@@ -102,9 +102,10 @@
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const message = document.getElementById("message").value;
+    const errorMessage = document.getElementById("error-message").textContent;
 
     if ((firstName == "") || (lastName == "") || (message == "")) {
-      alert ("Error");
+      alert (errorMessage);
       return false;
     }
   }
