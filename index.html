@@ -87,7 +87,7 @@
             </div>
           </div>
           <div class="sm:col-span-2 sm:flex sm:justify-end">
-            <button onclick="isEmpty()" type="submit" class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-teal-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">
+            <button type="submit" class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-teal-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">
               Envoyer
             </button>
           </div>
@@ -97,24 +97,26 @@
   </div>
 </div>
 <script>
-  // créer une alerte si un champ n'est pas rempli
-  function isEmpty() {
-    const firstName = document.getElementById("first-name").value;
-    const lastName = document.getElementById("last-name").value;
-    const message = document.getElementById("message").value;
+  let form = document.querySelector('form'); 
+  form.addEventListener('submit', submitForm)
 
+  function submitForm(event) {
+    event.preventDefault(); 
+    let firstName = document.getElementById("first-name").value;
+    let lastName = document.getElementById("last-name").value;
+    let message = document.getElementById("message").value;
+
+    // créer une alerte si un champ n'est pas rempli
     if ((firstName == "") || (lastName == "") || (message == "")) {
       document.getElementById("error-message").style.display = "block";
+    } else {
+      // Ajouter le contenu du formulaire à la page
+      console.log(firstName);
+      console.log(lastName);
+      console.log(message);
     }
-
-    // Ajouter le contenu du formulaire à la page
-    let newDiv = document.createElement("div");
-    let newContent = document.getElementById("first-name").value + document.getElementById("last-name").value;
-    newDiv.appendChild(newContent);
-    let currentDiv = document.getElementsByClassName("text-lg font-medium text-warm-gray-900");
-    document.body.insertBefore(newDiv,currentDiv);
+     //Supprimer le contenu des champs du formulaire
   } 
-
 
 </script>
 </body>
