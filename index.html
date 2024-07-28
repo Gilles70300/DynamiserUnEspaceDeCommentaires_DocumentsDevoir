@@ -102,13 +102,20 @@
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const message = document.getElementById("message").value;
-    const errorMessage = document.getElementById("error-message").textContent;
 
     if ((firstName == "") || (lastName == "") || (message == "")) {
-      alert (errorMessage);
-      return false;
+      document.getElementById("error-message").style.display = "block";
     }
-  }
+
+    // Ajouter le contenu du formulaire à la page
+    let newDiv = document.createElement("div");
+    let newContent = document.getElementById("first-name").value + document.getElementById("last-name").value;
+    newDiv.appendChild(newContent);
+    let currentDiv = document.getElementsByClassName("text-lg font-medium text-warm-gray-900");
+    document.body.insertBefore(newDiv,currentDiv);
+  } 
+
+
 </script>
 </body>
 </html>
